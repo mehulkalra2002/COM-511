@@ -1,34 +1,26 @@
-def create_student_record(id, name, age, grade):
-    return {
-        "ID": id,
-        "Name": name,
-        "Age": age,
-        "Grade": grade
-    }
+# Function to add a student record to the list
+def add_student(records, name, age, grade):
+    records[name] = {'Age': age, 'Grade': grade}
 
-def search_student(records, student_id):
-    for record in records:
-        if record["ID"] == student_id:
-            return record
-    return None
+# Function to search for a student record
+def search_student(records, name):
+    if name in records:
+        return records[name]
+    else:
+        return "Student not found"
 
-# Example records
-student_records = [
-    create_student_record(1, "Alice", 18, "A"),
-    create_student_record(2, "Bob", 19, "B"),
-    create_student_record(3, "Charlie", 17, "C"),
-    create_student_record(4, "David", 20, "A+")
-]
+# Sample student records
+student_records = {}
 
-# Searching for a student by ID
-search_id = 2
-found_student = search_student(student_records, search_id)
+# Adding records to the list
+add_student(student_records, 'Alice', 18, 'A')
+add_student(student_records, 'Bob', 19, 'B')
+add_student(student_records, 'Charlie', 20, 'C')
 
-if found_student:
-    print("Student found:")
-    print("ID:", found_student["ID"])
-    print("Name:", found_student["Name"])
-    print("Age:", found_student["Age"])
-    print("Grade:", found_student["Grade"])
+# Searching for a student record
+search_name = 'Bob'
+result = search_student(student_records, search_name)
+if result != "Student not found":
+    print(f"Student {search_name}'s record: Age - {result['Age']}, Grade - {result['Grade']}")
 else:
-    print("Student not found")
+    print(result)
