@@ -1,30 +1,30 @@
-# Creating a database using lists and tuples
-# Each student record is represented as a tuple
-
-# Database structure: (ID, Name, Age, Grade)
-student_database = [
-    (1, "Alice", 18, "A"),
-    (2, "Bob", 19, "B"),
-    (3, "Charlie", 17, "C"),
-    (4, "David", 20, "A+")
+# Define the database using lists and tuples
+books_database = [
+    ("Book Title 1", "Author 1", 2005),
+    ("Book Title 2", "Author 2", 2010),
+    ("Book Title 3", "Author 3", 2015),
+    ("Book Title 4", "Author 4", 2020)
 ]
 
-# Function to retrieve student information by ID
-def get_student_info(student_id):
-    for record in student_database:
-        if record[0] == student_id:
-            return record
-    return None
+# Functions to interact with the database
 
-# Accessing and displaying student information
-student_id_to_find = 3
-found_student = get_student_info(student_id_to_find)
+def display_books():
+    """Display all books in the database"""
+    print("Books in the database:")
+    for book in books_database:
+        print(f"Title: {book[0]}, Author: {book[1]}, Publication Year: {book[2]}")
 
-if found_student:
-    print("Student found:")
-    print("ID:", found_student[0])
-    print("Name:", found_student[1])
-    print("Age:", found_student[2])
-    print("Grade:", found_student[3])
-else:
-    print("Student not found")
+def add_book(title, author, year):
+    """Add a new book to the database"""
+    new_book = (title, author, year)
+    books_database.append(new_book)
+    print(f"Book '{title}' added to the database.")
+
+# Example usage:
+display_books()
+
+# Add a new book to the database
+add_book("New Book", "New Author", 2023)
+
+# Display all books after adding a new book
+display_books()
